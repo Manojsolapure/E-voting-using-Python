@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>User Voting Page</title>
+</head>
+<style>
+    /* Centering the text in the middle of the page */
+    .centered-text {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 70px;
+        text-align: center;
+        animation: colorChange 5s infinite; /* Animation added */
+        font-family: 'Cooper Black', serif;
+    }
+
+    /* Define the color-changing animation */
+    @keyframes colorChange {
+        0% {
+            color: red;
+        }
+        25% {
+            color: blue;
+        }
+        50% {
+            color: green;
+        }
+        75% {
+            color: orange;
+        }
+        100% {
+            color: purple;
+        }
+    }
+
+    /* Continuous color change for the h2 element */
+    @keyframes colorChangeText {
+        0% {
+            color: red;
+        }
+        25% {
+            color: blue;
+        }
+        50% {
+            color: green;
+        }
+        75% {
+            color: orange;
+        }
+        100% {
+            color: purple;
+        }
+    }
+
+    h10 {
+        animation: colorChangeText 5s infinite; /* Applying the animation */
+    }
+</style>
+
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+    </div>
+    <div class="centered-text">One Nation, one Election..</div>
+    </br>
+    </br>
+    </br>
+    </br>
+    <div class="background">
+        <div class="xyz-container">
+            <h2>Welcome, to Lok Sabha Election 2029</h2>
+            <h10>Want progress? Go and elect the suitable one.</h10> <!-- Changed to h2 for color change effect -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Serial No</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Symbol</th>
+                        <th>Vote</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Narendra Modi</td>
+                        <td><img src="{{ url_for('static', filename='symbol11.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><img src="{{ url_for('static', filename='symbol1.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><button onclick="vote(1)">Vote</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Rahul Gandhi</td>
+                        <td><img src="{{ url_for('static', filename='symbol12.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><img src="{{ url_for('static', filename='symbol2.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><button onclick="vote(2)">Vote</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Kumar Swami</td>
+                        <td><img src="{{ url_for('static', filename='symbol13.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><img src="{{ url_for('static', filename='symbol3.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><button onclick="vote(3)">Vote</button></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Nitesh Kumar</td>
+                        <td><img src="{{ url_for('static', filename='symbol14.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><img src="{{ url_for('static', filename='symbol4.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><button onclick="vote(4)">Vote</button></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Eknath Shinde</td>
+                        <td><img src="{{ url_for('static', filename='symbol15.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><img src="{{ url_for('static', filename='symbol5.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><button onclick="vote(5)">Vote</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function vote(candidateNumber) {
+            fetch(`/vote/${candidateNumber}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    alert("Thank you for voting!");
+                    window.location.href = '/'; // Redirect to home page
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

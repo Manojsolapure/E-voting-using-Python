@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Voting System</title>
+    <style>
+        /* Centering the text in the middle of the page */
+        .centered-text {
+            position: absolute;
+            top: 38%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 70px;
+            text-align: center;
+            animation: colorChange 5s infinite;
+            font-family: 'Cooper Black', serif;
+        }
+
+        /* Define the color-changing animation */
+        @keyframes colorChange {
+            0% {
+                color: rgb(241, 6, 6);
+            }
+            25% {
+                color: blue;
+            }
+            50% {
+                color: rgb(15, 255, 15);
+            }
+            75% {
+                color: orange;
+            }
+            100% {
+                color: rgb(245, 5, 245);
+            }
+        }
+
+        /* Login container styles */
+        .login-container {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 40px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for the dynamic sentence */
+        .dynamic-text {
+            font-size: 16px;
+            text-align: center;
+            margin-top: 10px;
+            animation: colorChange 3s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+    </div>
+    <div class="background">
+        <div class="centered-text">One Nation, one Election..</div>
+        <div class="button-container">
+            <button onclick="showLoginForm('user')">User Login</button>
+            <button onclick="showLoginForm('election')">Election Commission Login</button>
+        </div>
+    </div>
+
+    <div id="login-container" class="login-container">
+        <h3 id="login-title">Login</h3>
+        <p id="dynamic-text" class="dynamic-text"></p>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="validateLogin()">Login</button>
+    </div>
+
+    <script>
+        let loginType = "";
+
+        function showLoginForm(type) {
+            loginType = type;
+            const loginContainer = document.getElementById('login-container');
+            const loginTitle = document.getElementById('login-title');
+            const dynamicText = document.getElementById('dynamic-text');
+
+            loginContainer.style.display = 'block';
+            loginTitle.textContent = type === 'user' ? 'User Login' : 'Election Commission Login';
+
+            // Set the dynamic text and reset inputs
+            if (type === 'user') {
+                dynamicText.textContent = 'This section is only for user login.';
+            } else if (type === 'election') {
+                dynamicText.textContent = 'This section is only for Election Commission members.';
+            }
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        function validateLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (loginType === 'user') {
+                if (username === 'manoj' && password === 'Man123') {
+                    alert('User Login Successful!');
+                    window.location.href = '/user-login'; // Redirect to user-login.html
+                } else {
+                    alert('Invalid Username or Password for User!');
+                }
+            } else if (loginType === 'election') {
+                if (username === 'election' && password === '12345M') {
+                    alert('Election Commission Login Successful!');
+                    window.location.href = '/election-commission-login'; // Redirect to election-commission-login.html
+                } else {
+                    alert('Invalid Username or Password for Election Commission!');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

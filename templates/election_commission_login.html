@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Election Commission Login</title>
+</head>
+<style>
+    /* Centering the text in the middle of the page */
+    .centered-text {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 70px;
+        text-align: center;
+        animation: colorChange 5s infinite; /* Animation added */
+        font-family: 'Cooper Black', serif;
+    }
+
+    /* Define the color-changing animation */
+    @keyframes colorChange {
+        0% {
+            color: red;
+        }
+        25% {
+            color: blue;
+        }
+        50% {
+            color: green;
+        }
+        75% {
+            color: orange;
+        }
+        100% {
+            color: purple;
+        }
+    }
+</style>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+    </div>
+    <div class="centered-text">One Nation, one Election..</div>
+    </br></br></br></br>
+
+    <div class="background">
+        <div class="xyz-container">
+            <h2>Election Commission India</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Serial No</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Symbol</th>
+                        <th>Vote Count</th>
+                        <th>Percentage</th> <!-- New Percentage Column -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set total_votes = vote_counts.values() | sum %}
+                    
+                    <tr>
+                        <td>1</td>
+                        <td>Narendra Modi</td>
+                        <td><img src="{{ url_for('static', filename='symbol11.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><img src="{{ url_for('static', filename='symbol1.png') }}" alt="Symbol" class="symbol"></td>
+                        <td id="vote-count-1">{{ vote_counts[1] }}</td>
+                        <td>{{ (vote_counts[1] / total_votes * 100) | round(2) if total_votes > 0 else 0 }}%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Rahul Gandhi</td>
+                        <td><img src="{{ url_for('static', filename='symbol12.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><img src="{{ url_for('static', filename='symbol2.png') }}" alt="Symbol" class="symbol"></td>
+                        <td id="vote-count-2">{{ vote_counts[2] }}</td>
+                        <td>{{ (vote_counts[2] / total_votes * 100) | round(2) if total_votes > 0 else 0 }}%</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Kumar Swami</td>
+                        <td><img src="{{ url_for('static', filename='symbol13.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><img src="{{ url_for('static', filename='symbol3.png') }}" alt="Symbol" class="symbol"></td>
+                        <td id="vote-count-3">{{ vote_counts[3] }}</td>
+                        <td>{{ (vote_counts[3] / total_votes * 100) | round(2) if total_votes > 0 else 0 }}%</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Nitesh Kumar</td>
+                        <td><img src="{{ url_for('static', filename='symbol14.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><img src="{{ url_for('static', filename='symbol4.png') }}" alt="Symbol" class="symbol"></td>
+                        <td id="vote-count-4">{{ vote_counts[4] }}</td>
+                        <td>{{ (vote_counts[4] / total_votes * 100) | round(2) if total_votes > 0 else 0 }}%</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Eknath Shinde</td>
+                        <td><img src="{{ url_for('static', filename='symbol15.png') }}" alt="Symbol" class="symbol"></td>
+                        <td><img src="{{ url_for('static', filename='symbol5.png') }}" alt="Symbol" class="symbol"></td>
+                        <td id="vote-count-5">{{ vote_counts[5] }}</td>
+                        <td>{{ (vote_counts[5] / total_votes * 100) | round(2) if total_votes > 0 else 0 }}%</td>
+                    </tr>
+                </tbody>
+            </table>
+            </br></br>
+            <button onclick="window.location.href='/'">Log Out</button>
+        </div>
+    </div>
+</body>
+</html>

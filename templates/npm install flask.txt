@@ -1,0 +1,2 @@
+npm install flask
+python app.py
