@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('./background-image.png'); /* Set your background image here */
+    background-size: cover; /* Make sure the image covers the entire background */
+    background-position: center; /* Center the background image */
+}
+
+
+
+.header {
+    display: flex;
+    justify-content: space-between; /* Space between logo and round image */
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    width: 8cm; /* Increased size */
+    height: 4cm; /* Increased size */
+}
+
+.round-image {
+    width: 1cm; /* Increased size */
+    height: 1cm; /* Increased size */
+    border-radius: 50%;
+    margin-left: 10px; /* Add some margin for spacing */
+}
+
+.background {
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-container {
+    margin-bottom: 20px;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.xyz-container {
+    text-align: center;
+}
+
+/* General table styling */
+table {
+    width: 100%;  /* Set table width to 100% of the container */
+    border-collapse: collapse;  /* Removes the space between table cells */
+    background-color: #f5f5f5;  /* Light gray background */
+    border: 2px solid #333;  /* Darker border for the table */
+    margin-top: 20px;  /* Adds space above the table */
+    font-size: 18px;  /* Increases the font size */
+}
+
+/* Header styling */
+th {
+    background-color: #4CAF50;  /* Green background for the header */
+    color: white;  /* White text color */
+    padding: 15px;  /* Increase padding for more space in header */
+    text-align: left;  /* Align text to the left */
+    border-bottom: 2px solid #ddd;  /* Border below the header */
+}
+
+/* Row styling */
+td {
+    padding: 12px;  /* Padding inside each cell */
+    text-align: left;  /* Align text to the left */
+    border-bottom: 1px solid #ddd;  /* Border between rows */
+}
+
+/* Styling for each row on hover */
+tr:hover {
+    background-color: #f1f1f1;  /* Light gray color when hovering */
+}
+
+/* Adjusting the size of the symbols inside the cells */
+.symbol {
+    width: 50px;  /* Adjust the width of the image */
+    height: 50px;  /* Adjust the height of the image */
+}
+
+/* Table inside the Election Commission page */
+.xyz-container {
+    padding: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+/* Increase size of the table rows */
+tr {
+    height: 60px;  /* Set row height */
+}
+
+/* Log out button styling */
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.confirmation-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
